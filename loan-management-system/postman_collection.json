@@ -1,0 +1,218 @@
+{
+  "info": {
+    "name": "Bank Loan Management System",
+    "description": "API collection for testing the Loan Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Mortgage Loan",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Sarah Johnson\",\n  \"customerEmail\": \"sarah.johnson@email.com\",\n  \"phoneNumber\": \"+1-555-0123\",\n  \"loanType\": \"MORTGAGE_30_YEAR\",\n  \"loanAmount\": 350000.00,\n  \"termMonths\": 360,\n  \"creditScore\": 720,\n  \"employmentStatus\": \"Full-time Software Engineer\",\n  \"annualIncome\": 95000.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/loans",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans"]
+        }
+      }
+    },
+    {
+      "name": "Create Auto Loan",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Mike Davis\",\n  \"customerEmail\": \"mike.davis@email.com\",\n  \"phoneNumber\": \"+1-555-0456\",\n  \"loanType\": \"AUTO_LOAN\",\n  \"loanAmount\": 35000.00,\n  \"termMonths\": 60,\n  \"creditScore\": 680,\n  \"employmentStatus\": \"Full-time\",\n  \"annualIncome\": 65000.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/loans",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans"]
+        }
+      }
+    },
+    {
+      "name": "Get All Loans",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans"]
+        }
+      }
+    },
+    {
+      "name": "Get Loan by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Pending Loans",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/status/PENDING",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "status", "PENDING"]
+        }
+      }
+    },
+    {
+      "name": "Get Active Loans",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/active",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "active"]
+        }
+      }
+    },
+    {
+      "name": "Get High Risk Loans",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/high-risk",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "high-risk"]
+        }
+      }
+    },
+    {
+      "name": "Get Total Active Amount",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/total-active-amount",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "total-active-amount"]
+        }
+      }
+    },
+    {
+      "name": "Approve Loan",
+      "request": {
+        "method": "PUT",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/1/approve",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "1", "approve"]
+        }
+      }
+    },
+    {
+      "name": "Reject Loan",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "\"Insufficient credit score and high debt-to-income ratio\""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/loans/2/reject",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "2", "reject"]
+        }
+      }
+    },
+    {
+      "name": "Disburse Loan",
+      "request": {
+        "method": "PUT",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/1/disburse",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "1", "disburse"]
+        }
+      }
+    },
+    {
+      "name": "Update Loan",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Sarah Johnson Updated\",\n  \"customerEmail\": \"sarah.j.new@email.com\",\n  \"phoneNumber\": \"+1-555-9999\",\n  \"notes\": \"Customer requested contact information update\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/loans/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Loan",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/loans/5",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "loans", "5"]
+        }
+      }
+    }
+  ]
+}
