@@ -29,4 +29,10 @@ public class LoanController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
+    @GetMapping
+    public ResponseEntity<List<Loan>> getAllLoans() {
+        List<Loan> loans = loanService.getAllLoans();
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
 }
