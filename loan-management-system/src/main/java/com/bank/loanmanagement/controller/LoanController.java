@@ -35,4 +35,11 @@ public class LoanController {
         List<Loan> loans = loanService.getAllLoans();
         return new ResponseEntity<>(loans, HttpStatus.OK);
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
+        Optional<Loan> loan = loanService.getLoanById(id);
+        return loan.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                   .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }
