@@ -42,4 +42,14 @@ public class LoanController {
         return loan.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Loan>> getLoansByStatus(@PathVariable String status) {
+        try {
+            LoanStatus loanStatus = LoanStatus.valueOf(status.toUpperCase());
+            List<Loan> loans = loanService.getLoansByStatus(loanStatus);
+            return new ResponseEntity<>(loans, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
