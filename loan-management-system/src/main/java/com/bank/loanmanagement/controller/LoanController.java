@@ -52,4 +52,16 @@ public class LoanController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Loan>> getLoansByType(@PathVariable String type) {
+        try {
+            LoanType loanType = LoanType.valueOf(type.toUpperCase());
+            List<Loan> loans = loanService.getLoansByType(loanType);
+            return new ResponseEntity<>(loans, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    
 }
