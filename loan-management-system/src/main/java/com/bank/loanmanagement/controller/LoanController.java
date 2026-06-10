@@ -64,4 +64,10 @@ public class LoanController {
         }
     }
     
+    @GetMapping("/active")
+    public ResponseEntity<List<Loan>> getActiveLoans() {
+        List<Loan> loans = loanService.getActiveLoans();
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+    
 }
