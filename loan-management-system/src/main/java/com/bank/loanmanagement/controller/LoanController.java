@@ -70,4 +70,10 @@ public class LoanController {
         return new ResponseEntity<>(loans, HttpStatus.OK);
     }
     
+    @GetMapping("/high-risk")
+    public ResponseEntity<List<Loan>> getHighRiskPendingLoans() {
+        List<Loan> loans = loanService.getHighRiskPendingLoans();
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+    
 }
