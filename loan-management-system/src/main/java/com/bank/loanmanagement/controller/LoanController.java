@@ -75,5 +75,10 @@ public class LoanController {
         List<Loan> loans = loanService.getHighRiskPendingLoans();
         return new ResponseEntity<>(loans, HttpStatus.OK);
     }
+    @GetMapping("/total-active-amount")
+    public ResponseEntity<Double> getTotalActiveLoansAmount() {
+        Double total = loanService.getTotalActiveLoansAmount();
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
     
 }
