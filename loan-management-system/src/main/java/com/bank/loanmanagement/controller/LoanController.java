@@ -80,6 +80,13 @@ public class LoanController {
         Double total = loanService.getTotalActiveLoansAmount();
         return new ResponseEntity<>(total, HttpStatus.OK);
     }
-    
-    
+    @PutMapping("/{id}/approve")
+    public ResponseEntity<Loan> approveLoan(@PathVariable Long id) {
+        try {
+            Loan approvedLoan = loanService.approveLoan(id);
+            return new ResponseEntity<>(approvedLoan, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
