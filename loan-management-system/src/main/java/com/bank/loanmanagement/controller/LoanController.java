@@ -89,4 +89,14 @@ public class LoanController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/{id}/reject")
+    public ResponseEntity<Loan> rejectLoan(@PathVariable Long id, @RequestBody String reason) {
+        try {
+            Loan rejectedLoan = loanService.rejectLoan(id, reason);
+            return new ResponseEntity<>(rejectedLoan, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
 }
