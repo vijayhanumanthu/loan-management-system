@@ -98,5 +98,14 @@ public class LoanController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/{id}/disburse")
+    public ResponseEntity<Loan> disburseLoan(@PathVariable Long id) {
+        try {
+            Loan disbursedLoan = loanService.disburseLoan(id);
+            return new ResponseEntity<>(disbursedLoan, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
     
 }
