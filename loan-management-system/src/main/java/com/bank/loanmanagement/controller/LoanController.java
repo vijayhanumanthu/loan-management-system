@@ -117,5 +117,14 @@ public class LoanController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteLoan(@PathVariable Long id) {
+        try {
+            loanService.deleteLoan(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     
 }
