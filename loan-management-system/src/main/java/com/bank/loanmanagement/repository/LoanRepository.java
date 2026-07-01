@@ -17,5 +17,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
 	List<Loan> findByLoanType(LoanType loanType);
     List<Loan> findByCustomerEmail(String email);
     List<Loan> findByRiskLevel(RiskLevel riskLevel);
+    List<Loan> findByApplicationDateBetween(LocalDateTime start, LocalDateTime end);
 
 }
