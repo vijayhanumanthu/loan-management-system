@@ -18,5 +18,8 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     List<Loan> findByCustomerEmail(String email);
     List<Loan> findByRiskLevel(RiskLevel riskLevel);
     List<Loan> findByApplicationDateBetween(LocalDateTime start, LocalDateTime end);
+    @Query("SELECT l FROM Loan l WHERE l.status IN ('ACTIVE', 'DISBURSED')")
+    List<Loan> findActiveLoans();
+
 
 }
