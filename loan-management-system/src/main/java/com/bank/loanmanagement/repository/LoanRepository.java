@@ -20,6 +20,8 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     List<Loan> findByApplicationDateBetween(LocalDateTime start, LocalDateTime end);
     @Query("SELECT l FROM Loan l WHERE l.status IN ('ACTIVE', 'DISBURSED')")
     List<Loan> findActiveLoans();
+    @Query("SELECT SUM(l.loanAmount) FROM Loan l WHERE l.status IN ('ACTIVE', 'DISBURSED')")
+    Double getTotalActiveLoansAmount();
 
 
 }
