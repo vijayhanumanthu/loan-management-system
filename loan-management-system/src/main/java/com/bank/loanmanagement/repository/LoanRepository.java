@@ -22,6 +22,8 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     List<Loan> findActiveLoans();
     @Query("SELECT SUM(l.loanAmount) FROM Loan l WHERE l.status IN ('ACTIVE', 'DISBURSED')")
     Double getTotalActiveLoansAmount();
+    @Query("SELECT l FROM Loan l WHERE l.creditScore < 650 AND l.status = 'PENDING'")
+    List<Loan> findHighRiskPendingLoans();
 
 
 }
