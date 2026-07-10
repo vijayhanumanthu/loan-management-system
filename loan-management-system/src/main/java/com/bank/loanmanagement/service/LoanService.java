@@ -10,5 +10,9 @@ import java.util.Optional;
 
 @Service
 public class LoanService {
-    
+    public Loan createLoan(Loan loan) {
+        loan.setApplicationDate(LocalDateTime.now());
+        loan.setStatus(LoanStatus.PENDING);
+        loan.setCurrentFedRate(CURRENT_FED_RATE);
+        loan.setMarketCondition(CURRENT_MARKET_CONDITION);
 }
