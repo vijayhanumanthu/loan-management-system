@@ -22,5 +22,11 @@ public class LoanService {
         loan.setStatus(LoanStatus.PENDING);
         loan.setCurrentFedRate(CURRENT_FED_RATE);
         loan.setMarketCondition(CURRENT_MARKET_CONDITION);
+        
+        
+        // Calculate interest rate based on loan type and credit score
+        Double baseRate = loan.getLoanType().getCurrentBaseRate();
+        Double adjustedRate = calculateAdjustedRate(baseRate, loan.getCreditScore());
+        loan.setInterestRate(adjustedRate);
     }
 }
