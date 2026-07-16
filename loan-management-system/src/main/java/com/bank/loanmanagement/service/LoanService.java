@@ -28,5 +28,14 @@ public class LoanService {
         Double baseRate = loan.getLoanType().getCurrentBaseRate();
         Double adjustedRate = calculateAdjustedRate(baseRate, loan.getCreditScore());
         loan.setInterestRate(adjustedRate);
+        
+     // Calculate monthly payment
+        Double monthlyPayment = calculateMonthlyPayment(
+            loan.getLoanAmount(), 
+            adjustedRate, 
+            loan.getTermMonths()
+        );
+        loan.setMonthlyPayment(monthlyPayment);
+
     }
 }
