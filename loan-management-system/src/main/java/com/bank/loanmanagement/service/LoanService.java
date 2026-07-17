@@ -36,6 +36,12 @@ public class LoanService {
             loan.getTermMonths()
         );
         loan.setMonthlyPayment(monthlyPayment);
+        
+     // Calculate debt-to-income ratio if income is provided
+        if (loan.getAnnualIncome() != null && loan.getAnnualIncome() > 0) {
+            Double monthlyIncome = loan.getAnnualIncome() / 12;
+            loan.setDebtToIncomeRatio((monthlyPayment / monthlyIncome) * 100);
+        }
 
     }
 }
