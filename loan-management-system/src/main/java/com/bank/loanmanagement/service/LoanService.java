@@ -42,6 +42,12 @@ public class LoanService {
             Double monthlyIncome = loan.getAnnualIncome() / 12;
             loan.setDebtToIncomeRatio((monthlyPayment / monthlyIncome) * 100);
         }
+        
+        // Assess risk level
+        loan.setRiskLevel(assessRiskLevel(loan));
+        
+        return loanRepository.save(loan);
+    }
 
     }
 }
