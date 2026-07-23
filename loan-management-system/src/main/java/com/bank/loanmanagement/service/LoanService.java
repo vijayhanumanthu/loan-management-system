@@ -48,6 +48,19 @@ public class LoanService {
         
         return loanRepository.save(loan);
     }
+    private Double calculateAdjustedRate(Double baseRate, Integer creditScore) {
+        // Adjust rate based on credit score
+        if (creditScore >= 750) {
+            return baseRate - 0.50; // Excellent credit discount
+        } else if (creditScore >= 700) {
+            return baseRate - 0.25; // Good credit discount
+        } else if (creditScore >= 650) {
+            return baseRate; // Fair credit - base rate
+        } else if (creditScore >= 600) {
+            return baseRate + 0.75; // Poor credit surcharge
+        } else {
+            return baseRate + 1.50; // Very poor credit surcharge
+        }
+    }
 
     }
-}
