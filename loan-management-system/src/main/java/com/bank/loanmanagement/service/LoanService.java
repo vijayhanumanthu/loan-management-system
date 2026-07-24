@@ -62,5 +62,14 @@ public class LoanService {
             return baseRate + 1.50; // Very poor credit surcharge
         }
     }
+    private Double calculateMonthlyPayment(Double principal, Double annualRate, Integer months) {
+        Double monthlyRate = annualRate / 100 / 12;
+        if (monthlyRate == 0) {
+            return principal / months;
+        }
+        return principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / 
+               (Math.pow(1 + monthlyRate, months) - 1);
+    }
+    
 
     }
