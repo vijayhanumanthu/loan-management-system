@@ -70,6 +70,15 @@ public class LoanService {
         return principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / 
                (Math.pow(1 + monthlyRate, months) - 1);
     }
+    private RiskLevel assessRiskLevel(Loan loan) {
+        int riskScore = 0;
+        
+        // Credit score assessment
+        if (loan.getCreditScore() < 600) riskScore += 3;
+        else if (loan.getCreditScore() < 650) riskScore += 2;
+        else if (loan.getCreditScore() < 700) riskScore += 1;
+        
+    }
     
 
     }
