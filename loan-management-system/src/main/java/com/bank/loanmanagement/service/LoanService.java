@@ -77,8 +77,15 @@ public class LoanService {
         if (loan.getCreditScore() < 600) riskScore += 3;
         else if (loan.getCreditScore() < 650) riskScore += 2;
         else if (loan.getCreditScore() < 700) riskScore += 1;
+        // Debt-to-income ratio assessment
+        if (loan.getDebtToIncomeRatio() != null) {
+            if (loan.getDebtToIncomeRatio() > 43) riskScore += 3;
+            else if (loan.getDebtToIncomeRatio() > 36) riskScore += 2;
+            else if (loan.getDebtToIncomeRatio() > 28) riskScore += 1;
+        }
         
     }
+    
     
 
     }
