@@ -83,6 +83,12 @@ public class LoanService {
             else if (loan.getDebtToIncomeRatio() > 36) riskScore += 2;
             else if (loan.getDebtToIncomeRatio() > 28) riskScore += 1;
         }
+        // Loan amount to income ratio
+        if (loan.getAnnualIncome() != null && loan.getAnnualIncome() > 0) {
+            Double loanToIncomeRatio = loan.getLoanAmount() / loan.getAnnualIncome();
+            if (loanToIncomeRatio > 4) riskScore += 2;
+            else if (loanToIncomeRatio > 3) riskScore += 1;
+        }
         
     }
     
