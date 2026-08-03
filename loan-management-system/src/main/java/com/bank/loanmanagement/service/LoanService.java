@@ -89,6 +89,13 @@ public class LoanService {
             if (loanToIncomeRatio > 4) riskScore += 2;
             else if (loanToIncomeRatio > 3) riskScore += 1;
         }
+        // Determine risk level
+        if (riskScore >= 6) return RiskLevel.VERY_HIGH;
+        if (riskScore >= 4) return RiskLevel.HIGH;
+        if (riskScore >= 2) return RiskLevel.MEDIUM;
+        return RiskLevel.LOW;
+    }
+    
         
     }
     
