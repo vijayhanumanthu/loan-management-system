@@ -95,10 +95,19 @@ public class LoanService {
         if (riskScore >= 2) return RiskLevel.MEDIUM;
         return RiskLevel.LOW;
     }
+    public Loan approveLoan(Long loanId) {
+        Optional<Loan> loanOpt = loanRepository.findById(loanId);
+        if (loanOpt.isPresent()) {
+            Loan loan = loanOpt.get();
+            loan.setStatus(LoanStatus.APPROVED);
+            loan.setApprovalDate(LocalDateTime.now());
+            return loanRepository.save(loan);
+        }
+        throw new RuntimeException("Loan not found with id: " + loanId);
+    }
     
         
     }
-    
+
     
 
-    }
