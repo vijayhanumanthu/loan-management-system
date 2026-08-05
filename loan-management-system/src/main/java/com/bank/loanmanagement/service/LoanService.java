@@ -106,6 +106,18 @@ public class LoanService {
         throw new RuntimeException("Loan not found with id: " + loanId);
     }
     
+    
+    public Loan rejectLoan(Long loanId, String reason) {
+        Optional<Loan> loanOpt = loanRepository.findById(loanId);
+        if (loanOpt.isPresent()) {
+            Loan loan = loanOpt.get();
+            loan.setStatus(LoanStatus.REJECTED);
+            loan.setNotes(reason);
+            return loanRepository.save(loan);
+        }
+        throw new RuntimeException("Loan not found with id: " + loanId);
+    }
+    
         
     }
 
