@@ -117,7 +117,19 @@ public class LoanService {
         }
         throw new RuntimeException("Loan not found with id: " + loanId);
     }
-    
+    public Loan disburseLoan(Long loanId) {
+        Optional<Loan> loanOpt = loanRepository.findById(loanId);
+        if (loanOpt.isPresent()) {
+            Loan loan = loanOpt.get();
+            if (loan.getStatus() != LoanStatus.APPROVED) {
+                throw new RuntimeException("Loan must be approved before disbursement");
+            }
+            loan.setStatus(LoanStatus.DISBURSED);
+            loan.setDisbursementDate(LocalDateTime.now());
+            return loanRepository.save(loan);
+        }
+        throw new RuntimeException("Loan not found with id: " + loanId);
+    }
         
     }
 
