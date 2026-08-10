@@ -130,6 +130,10 @@ public class LoanService {
         }
         throw new RuntimeException("Loan not found with id: " + loanId);
     }
+    public List<Loan> getAllLoans() {
+        return loanRepository.findAll();
+    }
+    
         
     }
 
