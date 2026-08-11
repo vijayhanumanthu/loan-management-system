@@ -133,6 +133,9 @@ public class LoanService {
     public List<Loan> getAllLoans() {
         return loanRepository.findAll();
     }
+    public Optional<Loan> getLoanById(Long id) {
+        return loanRepository.findById(id);
+    }
     
         
     }
