@@ -136,6 +136,9 @@ public class LoanService {
     public Optional<Loan> getLoanById(Long id) {
         return loanRepository.findById(id);
     }
+    public List<Loan> getLoansByStatus(LoanStatus status) {
+        return loanRepository.findByStatus(status);
+    }
     
         
     }
