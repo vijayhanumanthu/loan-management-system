@@ -142,6 +142,9 @@ public class LoanService {
     public List<Loan> getLoansByType(LoanType type) {
         return loanRepository.findByLoanType(type);
     }
+    public List<Loan> getActiveLoans() {
+        return loanRepository.findActiveLoans();
+    }
         
     }
 
