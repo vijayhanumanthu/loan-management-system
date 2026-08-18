@@ -145,6 +145,9 @@ public class LoanService {
     public List<Loan> getActiveLoans() {
         return loanRepository.findActiveLoans();
     }
+    public List<Loan> getHighRiskPendingLoans() {
+        return loanRepository.findHighRiskPendingLoans();
+    }
         
     }
 
