@@ -148,6 +148,10 @@ public class LoanService {
     public List<Loan> getHighRiskPendingLoans() {
         return loanRepository.findHighRiskPendingLoans();
     }
+    public Double getTotalActiveLoansAmount() {
+        Double total = loanRepository.getTotalActiveLoansAmount();
+        return total != null ? total : 0.0;
+    }
         
     }
 
